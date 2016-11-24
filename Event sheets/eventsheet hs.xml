@@ -7,14 +7,7 @@
             <conditions>
                 <condition id="-2" name="On start of layout" sid="340759908899234" type="System" />
             </conditions>
-            <actions>
-                <action id="0" name="Play" sid="730788931246866" type="sounds">
-                    <param id="0" name="Audio file">rebel-theme</param>
-                    <param id="2" name="Loop">0</param>
-                    <param id="3" name="Volume">0</param>
-                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
-                </action>
-            </actions>
+            <actions />
         </event-block>
         <event-block sid="362401189516982">
             <conditions>

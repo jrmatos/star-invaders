@@ -3,7 +3,8 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>eventsheet gs</name>
     <events>
-        <variable constant="0" name="restartTime" sid="695558150600266" static="0" type="number">3</variable>
+        <variable constant="0" name="boss" sid="427274435100367" static="0" type="number">1</variable>
+        <variable constant="0" name="restartTime" sid="695558150600266" static="0" type="number">7</variable>
         <variable constant="0" name="tieAngle" sid="700714816345547" static="0" type="number">0</variable>
         <variable constant="0" name="score" sid="713213432630531" static="0" type="number">0</variable>
         <variable constant="0" name="highScore" sid="439532136363741" static="0" type="number">0</variable>
@@ -67,7 +68,12 @@
         <event-block sid="573452377214727">
             <conditions>
                 <condition id="-6" name="Every X seconds" sid="531858793144441" type="System">
-                    <param id="0" name="Interval (seconds)">random(2)</param>
+                    <param id="0" name="Interval (seconds)">random(0.5,1)</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="288938115109937" type="System">
+                    <param id="0" name="Variable">boss</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
                 </condition>
             </conditions>
             <actions>
@@ -84,7 +90,7 @@
         </event-block>
         <event-block sid="278484480987650">
             <conditions>
-                <condition id="0" name="On collision with another object" sid="975648541603408" type="trash">
+                <condition id="0" name="On collision with another object" sid="975648541603408" type="trashleft">
                     <param id="0" name="Object">asteroid</param>
                 </condition>
             </conditions>
@@ -268,6 +274,11 @@
                 <condition id="0" name="On collision with another object" sid="116557983530968" type="ship">
                     <param id="0" name="Object">asteroid</param>
                 </condition>
+                <condition id="-14" name="Compare variable" sid="756656811792582" type="System">
+                    <param id="0" name="Variable">lives</param>
+                    <param id="1" name="Comparison">4</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
             </conditions>
             <actions>
                 <action id="-9" name="Set value" sid="699964731056801" type="System">
@@ -377,7 +388,7 @@
                 </condition>
                 <condition id="-14" name="Compare variable" sid="219000002970767" type="System">
                     <param id="0" name="Variable">lives</param>
-                    <param id="1" name="Comparison">0</param>
+                    <param id="1" name="Comparison">3</param>
                     <param id="2" name="Value">0</param>
                 </condition>
             </conditions>
@@ -412,6 +423,12 @@
                 <action id="-9" name="Destroy" sid="466386179254873" type="asteroid" />
                 <action id="-9" name="Destroy" sid="769891844889093" type="scoreTextHUD" />
                 <action id="-9" name="Destroy" sid="227600188626189" type="highScoreTextHUD" />
+                <action id="-3" name="Create object" sid="465961078587455" type="System">
+                    <param id="0" name="Object to create">terrain</param>
+                    <param id="1" name="Layer">&quot;solo&quot;</param>
+                    <param id="2" name="X">3905 - 1100</param>
+                    <param id="3" name="Y">terrain.Y</param>
+                </action>
                 <action id="-16" name="Wait" sid="749912640720539" type="System">
                     <param id="0" name="Seconds">restartTime</param>
                 </action>
@@ -480,37 +497,18 @@
                 <action id="0" name="Set text" sid="477554273837349" type="highScoreTextHUD">
                     <param id="0" name="Text">&quot;High Score: &quot;&amp;HighScore</param>
                 </action>
-                <action id="0" name="Set text" sid="165659874573747" type="fscore">
-                    <param id="0" name="Text">&quot;tua mae&quot;&amp;shipSpeed</param>
-                </action>
             </actions>
         </event-block>
         <comment>game background sound</comment>
-        <event-block sid="460821590399236">
-            <conditions>
-                <condition id="-2" name="On start of layout" sid="296146068839494" type="System" />
-            </conditions>
-            <actions>
-                <action id="-3" name="Set position" sid="342674769711189" type="tie">
-                    <param id="0" name="X">900</param>
-                    <param id="1" name="Y">random(700)</param>
-                </action>
-                <action id="0" name="Play" sid="662888940284487" type="sounds">
-                    <param id="0" name="Audio file">rebel-theme</param>
-                    <param id="2" name="Loop">0</param>
-                    <param id="3" name="Volume">-10</param>
-                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
-                </action>
-                <action id="-9" name="Set value" sid="634275566059772" type="System">
-                    <param id="0" name="Variable">score</param>
-                    <param id="1" name="Value">0</param>
-                </action>
-            </actions>
-        </event-block>
         <event-block sid="231663325075299">
             <conditions>
                 <condition id="-6" name="Every X seconds" sid="877129553754710" type="System">
-                    <param id="0" name="Interval (seconds)">random(0.7,1.5)</param>
+                    <param id="0" name="Interval (seconds)">random(2,3)</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="669062962917871" type="System">
+                    <param id="0" name="Variable">boss</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
                 </condition>
             </conditions>
             <actions>
@@ -525,7 +523,7 @@
         <event-block sid="534367859386098">
             <conditions>
                 <condition id="-6" name="Every X seconds" sid="589218258325143" type="System">
-                    <param id="0" name="Interval (seconds)">random(0.7,1.5)</param>
+                    <param id="0" name="Interval (seconds)">random(1,1.5)</param>
                 </condition>
                 <condition id="-16" name="Pick random instance" sid="891659060612275" type="System">
                     <param id="0" name="Object">tie</param>
@@ -561,45 +559,12 @@
         </event-block>
         <event-block sid="460712591836059">
             <conditions>
-                <condition id="0" name="On collision with another object" sid="722801517562466" type="trash">
+                <condition id="0" name="On collision with another object" sid="722801517562466" type="trashleft">
                     <param id="0" name="Object">tie</param>
                 </condition>
             </conditions>
             <actions>
                 <action id="-9" name="Destroy" sid="464925785542020" type="tie" />
-            </actions>
-        </event-block>
-        <event-block sid="784159419260262">
-            <conditions>
-                <condition id="0" name="On collision with another object" sid="959553103439973" type="bullettie">
-                    <param id="0" name="Object">asteroid</param>
-                </condition>
-            </conditions>
-            <actions>
-                <action id="-9" name="Destroy" sid="496225963466659" type="bullettie" />
-                <action id="25" name="Play at object" sid="380032845625011" type="sounds">
-                    <param id="0" name="Audio file">asteroid-destroyed2</param>
-                    <param id="1" name="Loop">0</param>
-                    <param id="2" name="Volume">4</param>
-                    <param id="3" name="Object">asteroid</param>
-                    <param id="4" name="Inner angle">360</param>
-                    <param id="5" name="Outer angle">360</param>
-                    <param id="6" name="Outer gain">0</param>
-                    <param id="7" name="Tag (optional)">&quot;&quot;</param>
-                </action>
-                <action id="0" name="Spawn another object" sid="997242756585914" type="asteroid">
-                    <param id="0" name="Object">asteroidExplosion</param>
-                    <param id="1" name="Layer">0</param>
-                    <param id="2" name="Image point">0</param>
-                </action>
-                <action id="-8" name="Set angle" sid="271787087802648" type="asteroidExplosion">
-                    <param id="0" name="Angle">random(360)</param>
-                </action>
-                <action id="-9" name="Destroy" sid="929676944946643" type="asteroid" />
-                <action id="-16" name="Wait" sid="745054254828294" type="System">
-                    <param id="0" name="Seconds">0.2</param>
-                </action>
-                <action id="-9" name="Destroy" sid="835806033583329" type="asteroidExplosion" />
             </actions>
         </event-block>
         <event-block sid="447205268181650">
@@ -646,6 +611,11 @@
             <conditions>
                 <condition id="0" name="On collision with another object" sid="153416577307109" type="ship">
                     <param id="0" name="Object">bullettie</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="180791520959764" type="System">
+                    <param id="0" name="Variable">lives</param>
+                    <param id="1" name="Comparison">5</param>
+                    <param id="2" name="Value">0</param>
                 </condition>
             </conditions>
             <actions>
@@ -756,7 +726,7 @@
                 </condition>
                 <condition id="-14" name="Compare variable" sid="239523155461509" type="System">
                     <param id="0" name="Variable">lives</param>
-                    <param id="1" name="Comparison">0</param>
+                    <param id="1" name="Comparison">3</param>
                     <param id="2" name="Value">0</param>
                 </condition>
             </conditions>
@@ -791,6 +761,12 @@
                 <action id="-9" name="Destroy" sid="393752163553851" type="bullettie" />
                 <action id="-9" name="Destroy" sid="435196305877595" type="scoreTextHUD" />
                 <action id="-9" name="Destroy" sid="701254399188003" type="highScoreTextHUD" />
+                <action id="-3" name="Create object" sid="506439068280249" type="System">
+                    <param id="0" name="Object to create">terrain</param>
+                    <param id="1" name="Layer">&quot;solo&quot;</param>
+                    <param id="2" name="X">3905 - 1100</param>
+                    <param id="3" name="Y">terrain.Y</param>
+                </action>
                 <action id="-16" name="Wait" sid="454356981087006" type="System">
                     <param id="0" name="Seconds">restartTime</param>
                 </action>
@@ -840,6 +816,194 @@
             </conditions>
             <actions>
                 <action id="-9" name="Destroy" sid="874019176688772" type="terrain" />
+            </actions>
+        </event-block>
+        <comment>atat</comment>
+        <event-block sid="312738668121030">
+            <conditions>
+                <condition id="-6" name="Every X seconds" sid="586716490947431" type="System">
+                    <param id="0" name="Interval (seconds)">random(7,10)</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="267888484480187" type="System">
+                    <param id="0" name="Variable">boss</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-3" name="Create object" sid="679560198561825" type="System">
+                    <param id="0" name="Object to create">atat</param>
+                    <param id="1" name="Layer">&quot;objects&quot;</param>
+                    <param id="2" name="X">950</param>
+                    <param id="3" name="Y">random(680,700)</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="837964967424004">
+            <conditions>
+                <condition id="-6" name="Every X seconds" sid="456215676542946" type="System">
+                    <param id="0" name="Interval (seconds)">random(0.7,1.5)</param>
+                </condition>
+                <condition id="-3" name="Is on-screen" sid="415312187205143" type="ship" />
+                <condition id="-16" name="Pick random instance" sid="540326070668917" type="System">
+                    <param id="0" name="Object">atat</param>
+                </condition>
+                <condition id="-1" name="Compare X" sid="333906067362227" type="ship">
+                    <param id="0" name="Comparison">2</param>
+                    <param id="1" name="X co-ordinate">atat.X</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-3" name="Create object" sid="526748465587823" type="System">
+                    <param id="0" name="Object to create">bullettie</param>
+                    <param id="1" name="Layer">&quot;objects&quot;</param>
+                    <param id="2" name="X">atat.X</param>
+                    <param id="3" name="Y">atat.Y</param>
+                </action>
+                <action id="-22" name="Set angle toward position" sid="638656284275273" type="bullettie">
+                    <param id="0" name="X">ship.X</param>
+                    <param id="1" name="Y">ship.Y</param>
+                </action>
+                <action id="-16" name="Wait" sid="128426021386145" type="System">
+                    <param id="0" name="Seconds">0.2</param>
+                </action>
+                <action id="-3" name="Create object" sid="471364790219370" type="System">
+                    <param id="0" name="Object to create">bullettie</param>
+                    <param id="1" name="Layer">&quot;objects&quot;</param>
+                    <param id="2" name="X">atat.X</param>
+                    <param id="3" name="Y">atat.Y</param>
+                </action>
+                <action id="-22" name="Set angle toward position" sid="729438574110578" type="bullettie">
+                    <param id="0" name="X">ship.X</param>
+                    <param id="1" name="Y">ship.Y</param>
+                </action>
+                <action id="-16" name="Wait" sid="879279098982275" type="System">
+                    <param id="0" name="Seconds">0.2</param>
+                </action>
+                <action id="-3" name="Create object" sid="520871442044811" type="System">
+                    <param id="0" name="Object to create">bullettie</param>
+                    <param id="1" name="Layer">&quot;objects&quot;</param>
+                    <param id="2" name="X">atat.X</param>
+                    <param id="3" name="Y">atat.Y</param>
+                </action>
+                <action id="-22" name="Set angle toward position" sid="873905766100509" type="bullettie">
+                    <param id="0" name="X">ship.X</param>
+                    <param id="1" name="Y">ship.Y</param>
+                </action>
+                <action id="-16" name="Wait" sid="819150700796489" type="System">
+                    <param id="0" name="Seconds">0.2</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="267031865321784">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="153885605650908" type="trashleft">
+                    <param id="0" name="Object">atat</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="619420746772061" type="atat" />
+            </actions>
+        </event-block>
+        <event-block sid="748445408607789">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="379330219070309" type="trashright">
+                    <param id="0" name="Object">bullet</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="468317455740724" type="bullet" />
+            </actions>
+        </event-block>
+        <event-block sid="460821590399236">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="296146068839494" type="System" />
+            </conditions>
+            <actions>
+                <action id="-3" name="Set position" sid="342674769711189" type="tie">
+                    <param id="0" name="X">900</param>
+                    <param id="1" name="Y">random(700)</param>
+                </action>
+                <action id="-9" name="Set value" sid="634275566059772" type="System">
+                    <param id="0" name="Variable">score</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="-3" name="Set position" sid="136282939467361" type="atat">
+                    <param id="0" name="X">900</param>
+                    <param id="1" name="Y">700</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="803861324905374">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="980749398452941" type="bullet">
+                    <param id="0" name="Object">atat</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="487580867672793" type="bullet" />
+                <action id="-9" name="Set value" sid="179898036324354" type="System">
+                    <param id="0" name="Variable">score</param>
+                    <param id="1" name="Value">score + 20</param>
+                </action>
+                <action id="0" name="Set text" sid="612588970620325" type="scoreTextHUD">
+                    <param id="0" name="Text">&quot;Score: &quot;&amp;score</param>
+                </action>
+                <action id="25" name="Play at object" sid="785839349553441" type="sounds">
+                    <param id="0" name="Audio file">asteroid-destroyed2</param>
+                    <param id="1" name="Loop">0</param>
+                    <param id="2" name="Volume">4</param>
+                    <param id="3" name="Object">asteroid</param>
+                    <param id="4" name="Inner angle">360</param>
+                    <param id="5" name="Outer angle">360</param>
+                    <param id="6" name="Outer gain">0</param>
+                    <param id="7" name="Tag (optional)">&quot;&quot;</param>
+                </action>
+                <action id="0" name="Spawn another object" sid="554578974106965" type="atat">
+                    <param id="0" name="Object">asteroidExplosion</param>
+                    <param id="1" name="Layer">0</param>
+                    <param id="2" name="Image point">0</param>
+                </action>
+                <action id="-8" name="Set angle" sid="990942547930211" type="asteroidExplosion">
+                    <param id="0" name="Angle">random(360)</param>
+                </action>
+                <action id="-9" name="Destroy" sid="187171277907887" type="atat" />
+                <action id="-16" name="Wait" sid="556887566081317" type="System">
+                    <param id="0" name="Seconds">0.2</param>
+                </action>
+                <action id="-9" name="Destroy" sid="783693054954730" type="asteroidExplosion" />
+            </actions>
+        </event-block>
+        <event-block sid="699295042909305">
+            <conditions>
+                <condition id="-6" name="Every X seconds" sid="672187545438920" type="System">
+                    <param id="0" name="Interval (seconds)">1</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-3" name="Set position" sid="680590606240888" type="deathstar">
+                    <param id="0" name="X">random(820,900)</param>
+                    <param id="1" name="Y">random(350,400)</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="213156752317641">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="888817421431199" type="bullet">
+                    <param id="0" name="Object">deathstar</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Spawn another object" sid="241719343173259" type="bullet">
+                    <param id="0" name="Object">asteroidExplosion</param>
+                    <param id="1" name="Layer">0</param>
+                    <param id="2" name="Image point">0</param>
+                </action>
+                <action id="-9" name="Destroy" sid="278403215992820" type="bullet" />
+                <action id="-16" name="Wait" sid="220286642780829" type="System">
+                    <param id="0" name="Seconds">0.2</param>
+                </action>
+                <action id="-9" name="Destroy" sid="161841439778535" type="asteroidExplosion" />
             </actions>
         </event-block>
     </events>

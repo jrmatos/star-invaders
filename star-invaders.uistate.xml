@@ -11,9 +11,9 @@ you probably do not want to add any .uistate.xml files to the repository.-->
     </configurations>
     <open-tabs>
         <layout order="0">home_screen</layout>
-        <layout order="2">game_screen</layout>
+        <layout active="1" order="2">game_screen</layout>
         <event-sheet order="1">eventsheet hs</event-sheet>
-        <event-sheet active="1" order="3">eventsheet gs</event-sheet>
+        <event-sheet order="3">eventsheet gs</event-sheet>
     </open-tabs>
     <properties>
         <property expanded="1" name="About" />
@@ -32,7 +32,7 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <folder expanded="0" path="file-folder/Icons/" />
         <folder expanded="1" path="animation-folder/bg/" />
         <folder expanded="1" path="animation-folder/ship/" />
-        <folder expanded="1" path="animation-folder/trash/" />
+        <folder expanded="1" path="animation-folder/trashleft/" />
         <folder expanded="1" path="animation-folder/asteroid/" />
         <folder expanded="1" path="animation-folder/bullet/" />
         <folder expanded="1" path="animation-folder/shield/" />
@@ -49,5 +49,9 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <folder expanded="1" path="animation-folder/terraintrigger/" />
         <folder expanded="1" path="animation-folder/Sprite2/" />
         <folder expanded="1" path="animation-folder/trashterrain/" />
+        <folder expanded="1" path="animation-folder/atat/" />
+        <folder expanded="1" path="animation-folder/Sprite3/" />
+        <folder expanded="1" path="animation-folder/trashright/" />
+        <folder expanded="1" path="animation-folder/deathstar/" />
     </folders-expanded>
 </c2uistate>

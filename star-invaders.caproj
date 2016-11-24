@@ -83,7 +83,7 @@
         <object-type name="Keyboard" sid="160601790677209">
             <plugin id="Keyboard" />
         </object-type>
-        <object-type name="trash" sid="728007246539379">
+        <object-type name="trashleft" sid="728007246539379">
             <plugin id="Sprite" />
             <behaviors>
                 <behavior-type name="Solid" sid="731265580357615">
@@ -404,11 +404,69 @@
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="fscore" sid="560712482440860">
-            <plugin id="Text" />
+        <object-type name="atat" sid="694818560518552">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Bullet" sid="951547936116686">
+                    <behavior id="Bullet" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="886848332901465" speed="5">
+                    <frame duration="1" hotspotX="0.499547" hotspotY="0.49951" original-source="C:\Users\PAULO\Documents\star-invaders\assets\sprites\ATAT.png">
+                        <collision-poly>
+                            <point x="1" y="1" />
+                            <point x="0.511333" y="1" />
+                            <point x="0" y="1" />
+                            <point x="0" y="0.449559" />
+                            <point x="0" y="0" />
+                            <point x="0.500453" y="0" />
+                            <point x="1" y="0" />
+                            <point x="1" y="0.492654" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
         </object-type>
-        <object-type name="fhighscore" sid="535226181346732">
-            <plugin id="Text" />
+        <object-type name="Sprite3" sid="426810321482851">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="838889231145763" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="trashright" sid="517844769132958">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="182831762665595" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="deathstar" sid="797871748230010">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Solid" sid="512987337203805">
+                    <behavior id="solid" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="522852551725484" speed="5">
+                    <frame duration="1" hotspotX="0.500506" hotspotY="0.5" original-source="C:\Users\PAULO\Documents\star-invaders\assets\sprites\estrela_da_morte.png">
+                        <collision-poly>
+                            <point x="0.147624" y="0.143418" />
+                            <point x="0.499494" y="0.0275049" />
+                            <point x="0.851365" y="0.144401" />
+                            <point x="0.971689" y="0.5" />
+                            <point x="0.852376" y="0.856582" />
+                            <point x="0.499494" y="0.973477" />
+                            <point x="0.148635" y="0.855599" />
+                            <point x="0.00808898" y="0.496071" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
         </object-type>
     </object-folder>
     <families />
