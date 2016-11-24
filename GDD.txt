@@ -1,0 +1,30 @@
+- Terreno infinito
+
+- Inimigo Tie fighter
+	- aéreo
+	- único tiro
+	- mira para o jogador, atira e continua na trajetória anterior
+	- atira em todas as direções
+
+- Inimigo ATAT
+	- característica terrestre
+	- tiro triplo
+	- só atira em alvos a sua frente ou em cima
+
+Condições de derrota
+	- colisão com meteoro
+	- colisão com bala vermelha (genérica)
+
+Pontuação
+	- 5 asteróide
+	- 10 Tie figheter
+	- 20 ATAT
+	- 500 BOSS
+
+BOSS
+	- aparece após 30 segundos do início da partida
+	- um hud mostrando a vida do boss aparece no canto superior direito da tela
+	- se move de forma aleatória a cada segundo
+	- atira simultaneamente nos ângulos 120, 150, 180, 210 e 240
+	- total de vida: 100
+	- cada tiro recebido perde -2 de vida

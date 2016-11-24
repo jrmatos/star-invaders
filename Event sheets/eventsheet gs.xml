@@ -1145,6 +1145,12 @@
                 <condition id="-2" name="On start of layout" sid="894936180864782" type="System" />
             </conditions>
             <actions>
+                <action id="0" name="Play" sid="914055752723620" type="sounds">
+                    <param id="0" name="Audio file">rebel-theme</param>
+                    <param id="2" name="Loop">0</param>
+                    <param id="3" name="Volume">-10</param>
+                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                </action>
                 <action id="0" name="Set text" sid="477554273837349" type="highScoreTextHUD">
                     <param id="0" name="Text">&quot;High Score: &quot;&amp;HighScore</param>
                 </action>
