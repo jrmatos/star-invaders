@@ -1,0 +1,471 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2project>
+    <name>star-invaders</name>
+    <description></description>
+    <version>1.0.0.0</version>
+    <author></author>
+    <author-email></author-email>
+    <author-website>http://</author-website>
+    <app-id>com.mycompany.myapp</app-id>
+    <unique-id>1m8c1cch215pc</unique-id>
+    <saved-with-version>23900</saved-with-version>
+    <used-plugins>
+        <plugin author="Scirra" id="Audio" version="1">Audio</plugin>
+        <plugin author="Scirra" id="Function" version="1">Function</plugin>
+        <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
+        <plugin author="Scirra" id="LocalStorage" version="1">Local storage</plugin>
+        <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
+        <plugin author="Scirra" id="Text" version="1">Text</plugin>
+        <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
+    </used-plugins>
+    <used-behaviors>
+        <behavior author="Scirra" id="Bullet" version="1">Bullet</behavior>
+        <behavior author="Scirra" id="bound" version="1">Bound to layout</behavior>
+        <behavior author="Scirra" id="solid" version="1">Solid</behavior>
+    </used-behaviors>
+    <used-effects />
+    <configurations>
+        <configuration exporter-descname="HTML5" exporter-id="html5" name="HTML5" />
+    </configurations>
+    <window-size>
+        <width>960</width>
+        <height>768</height>
+    </window-size>
+    <pixel-rounding>0</pixel-rounding>
+    <preview-effects>1</preview-effects>
+    <use-loader-layout>0</use-loader-layout>
+    <configuration-settings>
+        <prop name="Clear background">Yes</prop>
+        <prop name="Downscaling">Medium quality</prop>
+        <prop name="Enable WebGL">On</prop>
+        <prop name="Fullscreen in browser">Letterbox scale</prop>
+        <prop name="Fullscreen scaling">High quality</prop>
+        <prop name="Loader style">Construct 2 splash</prop>
+        <prop name="Orientations">Any</prop>
+        <prop name="Pause on unfocus">No</prop>
+        <prop name="Physics engine">Box2D asm.js</prop>
+        <prop name="Preload sounds">Yes</prop>
+        <prop name="Preview browser">(default)</prop>
+        <prop name="Sampling">Linear</prop>
+        <prop name="Use high-DPI display">Yes</prop>
+    </configuration-settings>
+    <object-folder>
+        <object-type name="bg" sid="465634751418697">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="574948824944101" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Convidado\Documents\star-invaders\assets\space-bg.jpg" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="ship" sid="912472094098508">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="BoundToLayout" sid="247168527408478">
+                    <behavior id="bound" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="766528871210773" speed="5">
+                    <frame duration="1" hotspotX="0.500598" hotspotY="0.5" original-source="C:\Users\PAULO\Documents\star-invaders\assets\sprites\millenium_falcon.png">
+                        <collision-poly>
+                            <point x="0" y="0.00401068" />
+                            <point x="0.827619" y="0" />
+                            <point x="0.997062" y="0.516043" />
+                            <point x="0.835455" y="1" />
+                            <point x="0" y="1" />
+                            <point x="0" y="0.508849" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Keyboard" sid="160601790677209">
+            <plugin id="Keyboard" />
+        </object-type>
+        <object-type name="trash" sid="728007246539379">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Solid" sid="731265580357615">
+                    <behavior id="solid" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="430862460750364" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="asteroid" sid="921046884432643">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Bullet" sid="499105406130652">
+                    <behavior id="Bullet" />
+                </behavior-type>
+                <behavior-type name="Solid" sid="581160062977677">
+                    <behavior id="solid" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="413608736975780" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\PAULO\Documents\star-invaders\assets\sprites\meteoro.png">
+                        <collision-poly>
+                            <point x="0.2625" y="0.0209424" />
+                            <point x="0.5375" y="0" />
+                            <point x="0.8625" y="0.112565" />
+                            <point x="1" y="0.534031" />
+                            <point x="0.8875" y="0.926702" />
+                            <point x="0.4575" y="1" />
+                            <point x="0.18" y="0.892671" />
+                            <point x="0" y="0.507853" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="scoreTextHUD" sid="523017961217499">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="bullet" sid="309088850378403">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Bullet" sid="940185824026789">
+                    <behavior id="Bullet" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="993004261218809" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Convidado\Documents\star-invaders\assets\bullet.png">
+                        <collision-poly>
+                            <point x="1" y="0.5" />
+                            <point x="0.801953" y="0.567578" />
+                            <point x="0.607031" y="0.613281" />
+                            <point x="0.0148433" y="0.607031" />
+                            <point x="0" y="0.5" />
+                            <point x="0.0156245" y="0.390625" />
+                            <point x="0.609375" y="0.390625" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="gameOverTitleText" sid="821932546826827">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="sounds" sid="244946907703875">
+            <plugin id="Audio" />
+        </object-type>
+        <object-type name="shield" sid="804635047315856">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="727669815670759" speed="5">
+                    <frame duration="1" hotspotX="0.500761" hotspotY="0.500761" original-source="C:\Users\PAULO\Documents\star-invaders\assets\sprites\escudo.png">
+                        <collision-poly>
+                            <point x="0.0991667" y="0.129608" />
+                            <point x="0.506088" y="0" />
+                            <point x="0.866486" y="0.133514" />
+                            <point x="1" y="0.542618" />
+                            <point x="0.848221" y="0.854309" />
+                            <point x="0.512177" y="1" />
+                            <point x="0.135239" y="0.852586" />
+                            <point x="0" y="0.53653" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="hpText" sid="171933422105811">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="heart1" sid="294218562760465">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="122427183351874" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\PAULO\Documents\star-invaders\assets\images\heart.png">
+                        <collision-poly>
+                            <point x="0" y="0" />
+                            <point x="0.506757" y="0" />
+                            <point x="1" y="0" />
+                            <point x="1" y="0.542857" />
+                            <point x="0.993243" y="1" />
+                            <point x="0.533784" y="1" />
+                            <point x="0.0135135" y="1" />
+                            <point x="0" y="0.442857" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="heart2" sid="761996297139563">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="955014413840350" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\PAULO\Documents\star-invaders\assets\images\heart.png">
+                        <collision-poly>
+                            <point x="0.121622" y="0.128571" />
+                            <point x="0.5" y="0.185714" />
+                            <point x="0.878378" y="0.128571" />
+                            <point x="0.986486" y="0.5" />
+                            <point x="0.77027" y="0.757143" />
+                            <point x="0.5" y="0.985714" />
+                            <point x="0.22973" y="0.757143" />
+                            <point x="0.0135135" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="heart3" sid="211846866825499">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="607415122609108" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\PAULO\Documents\star-invaders\assets\images\heart.png">
+                        <collision-poly>
+                            <point x="0.121622" y="0.128571" />
+                            <point x="0.5" y="0.185714" />
+                            <point x="0.878378" y="0.128571" />
+                            <point x="0.986486" y="0.5" />
+                            <point x="0.77027" y="0.757143" />
+                            <point x="0.5" y="0.985714" />
+                            <point x="0.22973" y="0.757143" />
+                            <point x="0.0135135" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="gameOverScoreText" sid="729749901013577">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="gameOverHighScoreText" sid="669021800304397">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="highScoreTextHUD" sid="176723737862206">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="asteroidExplosion" sid="321864724613664">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="811946411152608" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.500904" original-source="C:\Users\PAULO\Documents\star-invaders\assets\sprites\explosao.png">
+                        <collision-poly>
+                            <point x="0" y="0" />
+                            <point x="0.488473" y="0" />
+                            <point x="0.994236" y="0" />
+                            <point x="1" y="0.528933" />
+                            <point x="0.994236" y="1" />
+                            <point x="0.511527" y="1" />
+                            <point x="0" y="1" />
+                            <point x="0" y="0.427667" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Function" sid="164031956199861">
+            <plugin id="Function" />
+        </object-type>
+        <object-type name="LocalStorage" sid="380625168615346">
+            <plugin id="LocalStorage" />
+        </object-type>
+        <object-type name="bg1" sid="170786661496747">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="248295767030013" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.500678" original-source="C:\Users\PAULO\Documents\star-invaders\assets\sprites\background-01.jpg" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="trash2" sid="982311036234612">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Solid" sid="129784328741702">
+                    <behavior id="solid" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="952443516308085" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Sprite" sid="289438417146004">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="373130567018631" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.500678" original-source="C:\Users\fernandodantas\Documents\posuea-DesenvolvimentoDeJogos\IntroducaoaProgramacaoDeJogosEletronicos\star-invaders\assets\images\space-bg1.jpg" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="pressSpaceToStart" sid="213607769675142">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="Instructions" sid="308606589741301">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="Credits" sid="739780901464323">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="Touch" sid="750465704594996">
+            <plugin id="Touch" />
+        </object-type>
+        <object-type name="tie" sid="421869325843148">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Bullet" sid="796590557013836">
+                    <behavior id="Bullet" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="802851069854639" speed="5">
+                    <frame duration="1" hotspotX="0.500818" hotspotY="0.504902" original-source="C:\Users\PAULO\Documents\star-invaders\assets\sprites\TIE_redondo.png">
+                        <collision-poly>
+                            <point x="0" y="0" />
+                            <point x="1" y="0" />
+                            <point x="0.984069" y="0.499182" />
+                            <point x="1" y="1" />
+                            <point x="0" y="1" />
+                            <point x="0" y="0.489378" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="bullettie" sid="541366536753341">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Bullet" sid="119779077557189">
+                    <behavior id="Bullet" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="649340935743372" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\PAULO\Documents\star-invaders\assets\images\bullet-tie.png">
+                        <collision-poly>
+                            <point x="1" y="0.5" />
+                            <point x="0.610156" y="0.610156" />
+                            <point x="0" y="0.597656" />
+                            <point x="0" y="0.5" />
+                            <point x="0" y="0.390625" />
+                            <point x="0.609375" y="0.390625" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="terrain" sid="588489083356126">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Bullet" sid="727615938539217">
+                    <behavior id="Bullet" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="637898677371320" speed="5">
+                    <frame duration="1" hotspotX="0.500061" hotspotY="0.5" original-source="C:\Users\PAULO\Documents\star-invaders\assets\sprites\solo.png">
+                        <collision-poly>
+                            <point x="0" y="0.5" />
+                            <point x="0" y="0" />
+                            <point x="1" y="0" />
+                            <point x="1" y="1" />
+                            <point x="0.503872" y="1" />
+                            <point x="0" y="1" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="terraintrigger" sid="607693365853575">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Bullet" sid="612719014571772">
+                    <behavior id="Bullet" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="463010204397065" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Sprite2" sid="934463527824088">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="818492092338467" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="trashterrain" sid="439746453986272">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="931276366112098" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="fscore" sid="560712482440860">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="fhighscore" sid="535226181346732">
+            <plugin id="Text" />
+        </object-type>
+    </object-folder>
+    <families />
+    <layout-folder>
+        <layout>game_screen.xml</layout>
+        <layout>home_screen.xml</layout>
+    </layout-folder>
+    <event-folder>
+        <event-sheet>eventsheet gs.xml</event-sheet>
+        <event-sheet>eventsheet hs.xml</event-sheet>
+    </event-folder>
+    <global-instances>
+        <global-instance type="Keyboard" uid="6" />
+        <global-instance type="sounds" uid="10">
+            <properties>
+                <timescale-audio>Off</timescale-audio>
+                <saveload>All</saveload>
+                <play-in-background>No</play-in-background>
+                <positioned-audio></positioned-audio>
+                <panning-model>HRTF</panning-model>
+                <distance-model>Inverse</distance-model>
+                <listener-z-height>600</listener-z-height>
+                <reference-distance>600</reference-distance>
+                <maximum-distance>10000</maximum-distance>
+                <roll-off-factor>1</roll-off-factor>
+            </properties>
+        </global-instance>
+        <global-instance type="Function" uid="22" />
+        <global-instance type="LocalStorage" uid="23" />
+        <global-instance type="Touch" uid="15">
+            <properties>
+                <use-mouse-input>Yes</use-mouse-input>
+            </properties>
+        </global-instance>
+    </global-instances>
+    <sounds-folder>
+        <file name="asteroiddestroyed.ogg" />
+        <file name="firebullet.ogg" />
+        <file name="asteroid-destroyed1.ogg" />
+        <file name="asteroid-destroyed2.ogg" />
+        <file name="player-destroyed.ogg" />
+        <file name="gameover.ogg" />
+        <file name="gameover1.ogg" />
+        <file name="shield.ogg" />
+        <file name="shield1.ogg" />
+    </sounds-folder>
+    <music-folder>
+        <file name="rebel-theme.ogg" />
+    </music-folder>
+    <files-folder>
+        <file-folder name="Icons">
+            <file name="icon-16.png" />
+            <file name="icon-32.png" />
+            <file name="icon-114.png" />
+            <file name="icon-128.png" />
+            <file name="icon-256.png" />
+            <file name="loading-logo.png" />
+        </file-folder>
+    </files-folder>
+</c2project>

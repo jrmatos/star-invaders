@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2uistate>
+    <!--This is a UI state file - its content describes the user interface settings when the project was last open.
+It is entirely optional and the project will load without it.  If you are placing the project under source control,
+you probably do not want to add any .uistate.xml files to the repository.-->
+    <configurations>
+        <active>
+            <configuration name="HTML5" />
+        </active>
+        <display name="HTML5" />
+    </configurations>
+    <open-tabs>
+        <layout order="0">home_screen</layout>
+        <layout order="2">game_screen</layout>
+        <event-sheet order="1">eventsheet hs</event-sheet>
+        <event-sheet active="1" order="3">eventsheet gs</event-sheet>
+    </open-tabs>
+    <properties>
+        <property expanded="1" name="About" />
+        <property expanded="1" name="Project settings" />
+        <property expanded="0" name="Window Size" />
+        <property expanded="1" name="Configuration Settings" />
+    </properties>
+    <families-expanded root="1" />
+    <folders-expanded>
+        <folder expanded="1" path="object-folder/" />
+        <folder expanded="1" path="layout-folder/" />
+        <folder expanded="1" path="event-folder/" />
+        <folder expanded="1" path="file-folder/" />
+        <folder expanded="1" path="sound-folder/" />
+        <folder expanded="1" path="music-folder/" />
+        <folder expanded="0" path="file-folder/Icons/" />
+        <folder expanded="1" path="animation-folder/bg/" />
+        <folder expanded="1" path="animation-folder/ship/" />
+        <folder expanded="1" path="animation-folder/trash/" />
+        <folder expanded="1" path="animation-folder/asteroid/" />
+        <folder expanded="1" path="animation-folder/bullet/" />
+        <folder expanded="1" path="animation-folder/shield/" />
+        <folder expanded="1" path="animation-folder/heart1/" />
+        <folder expanded="1" path="animation-folder/heart2/" />
+        <folder expanded="1" path="animation-folder/heart3/" />
+        <folder expanded="1" path="animation-folder/asteroidExplosion/" />
+        <folder expanded="1" path="animation-folder/bg1/" />
+        <folder expanded="1" path="animation-folder/trash2/" />
+        <folder expanded="1" path="animation-folder/Sprite/" />
+        <folder expanded="1" path="animation-folder/tie/" />
+        <folder expanded="1" path="animation-folder/bullettie/" />
+        <folder expanded="1" path="animation-folder/terrain/" />
+        <folder expanded="1" path="animation-folder/terraintrigger/" />
+        <folder expanded="1" path="animation-folder/Sprite2/" />
+        <folder expanded="1" path="animation-folder/trashterrain/" />
+    </folders-expanded>
+</c2uistate>

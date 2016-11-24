@@ -1,0 +1,846 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>eventsheet gs</name>
+    <events>
+        <variable constant="0" name="restartTime" sid="695558150600266" static="0" type="number">3</variable>
+        <variable constant="0" name="tieAngle" sid="700714816345547" static="0" type="number">0</variable>
+        <variable constant="0" name="score" sid="713213432630531" static="0" type="number">0</variable>
+        <variable constant="0" name="highScore" sid="439532136363741" static="0" type="number">0</variable>
+        <variable constant="0" name="isShieldActivated" sid="940971478652579" static="0" type="number">0</variable>
+        <variable constant="0" name="shieldInitialPositionY" sid="359086972949266" static="0" type="number">-158</variable>
+        <variable constant="0" name="shieldInitialPositionX" sid="198437079198619" static="0" type="number">919</variable>
+        <variable constant="0" name="initialPositionY" sid="891970464915152" static="0" type="number">394</variable>
+        <variable constant="0" name="initialPositionX" sid="933214319553797" static="0" type="number">76</variable>
+        <variable constant="0" name="shipSpeed" sid="787059618858096" static="0" type="number">10</variable>
+        <variable constant="0" name="lives" sid="636901397335889" static="0" type="number">3</variable>
+        <comment>ship movements</comment>
+        <event-block sid="704552328001207">
+            <conditions>
+                <condition id="5" name="Key code is down" sid="443740542891038" type="Keyboard">
+                    <param id="0" name="Keycode">39</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-1" name="Set X" sid="798744637573367" type="ship">
+                    <param id="0" name="X">ship.X + shipSpeed</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="710177371625539">
+            <conditions>
+                <condition id="5" name="Key code is down" sid="196399191618139" type="Keyboard">
+                    <param id="0" name="Keycode">37</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-1" name="Set X" sid="194252352562940" type="ship">
+                    <param id="0" name="X">ship.X - shipSpeed</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="484065923124149">
+            <conditions>
+                <condition id="5" name="Key code is down" sid="359202303777426" type="Keyboard">
+                    <param id="0" name="Keycode">38</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-2" name="Set Y" sid="378350756185134" type="ship">
+                    <param id="0" name="Y">ship.y - shipSpeed</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="360987384479424">
+            <conditions>
+                <condition id="5" name="Key code is down" sid="498383090158786" type="Keyboard">
+                    <param id="0" name="Keycode">40</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-2" name="Set Y" sid="210421308640453" type="ship">
+                    <param id="0" name="Y">ship.y + shipSpeed</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>creating objects random</comment>
+        <event-block sid="573452377214727">
+            <conditions>
+                <condition id="-6" name="Every X seconds" sid="531858793144441" type="System">
+                    <param id="0" name="Interval (seconds)">random(2)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-3" name="Create object" sid="289173530682843" type="System">
+                    <param id="0" name="Object to create">asteroid</param>
+                    <param id="1" name="Layer">&quot;objects&quot;</param>
+                    <param id="2" name="X">920</param>
+                    <param id="3" name="Y">random(1,700)</param>
+                </action>
+                <action id="-8" name="Set angle" sid="711567716051455" type="asteroid">
+                    <param id="0" name="Angle">random(160, 200)</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="278484480987650">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="975648541603408" type="trash">
+                    <param id="0" name="Object">asteroid</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="364698307391502" type="asteroid" />
+            </actions>
+        </event-block>
+        <event-block sid="364334841668551">
+            <conditions>
+                <condition id="4" name="On key code pressed" sid="750124675314270" type="Keyboard">
+                    <param id="0" name="Keycode">32</param>
+                </condition>
+                <condition id="-3" name="Is on-screen" sid="514728313702872" type="ship" />
+            </conditions>
+            <actions>
+                <action id="-3" name="Create object" sid="988653671153608" type="System">
+                    <param id="0" name="Object to create">bullet</param>
+                    <param id="1" name="Layer">&quot;objects&quot;</param>
+                    <param id="2" name="X">ship.X + 25</param>
+                    <param id="3" name="Y">ship.Y</param>
+                </action>
+                <action id="25" name="Play at object" sid="402386117389934" type="sounds">
+                    <param id="0" name="Audio file">firebullet</param>
+                    <param id="1" name="Loop">0</param>
+                    <param id="2" name="Volume">20</param>
+                    <param id="3" name="Object">bullet</param>
+                    <param id="4" name="Inner angle">360</param>
+                    <param id="5" name="Outer angle">360</param>
+                    <param id="6" name="Outer gain">0</param>
+                    <param id="7" name="Tag (optional)">&quot;&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="791484951396216">
+            <conditions>
+                <condition id="-14" name="Compare variable" sid="333569106916056" type="System">
+                    <param id="0" name="Variable">isShieldActivated</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+                <condition id="5" name="Key code is down" sid="559819923524805" type="Keyboard">
+                    <param id="0" name="Keycode">40</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-4" name="Set position to another object" sid="891394233139620" type="shield">
+                    <param id="0" name="Object">ship</param>
+                    <param id="1" name="Image point (optional)">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="443375408974355">
+            <conditions>
+                <condition id="-14" name="Compare variable" sid="473779597823533" type="System">
+                    <param id="0" name="Variable">isShieldActivated</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+                <condition id="5" name="Key code is down" sid="778798030306841" type="Keyboard">
+                    <param id="0" name="Keycode">38</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-4" name="Set position to another object" sid="243957102488881" type="shield">
+                    <param id="0" name="Object">ship</param>
+                    <param id="1" name="Image point (optional)">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="620565610452116">
+            <conditions>
+                <condition id="-14" name="Compare variable" sid="838406374781210" type="System">
+                    <param id="0" name="Variable">isShieldActivated</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+                <condition id="5" name="Key code is down" sid="690636917338085" type="Keyboard">
+                    <param id="0" name="Keycode">37</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-4" name="Set position to another object" sid="870336357219807" type="shield">
+                    <param id="0" name="Object">ship</param>
+                    <param id="1" name="Image point (optional)">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="921178831621552">
+            <conditions>
+                <condition id="-14" name="Compare variable" sid="621869487805280" type="System">
+                    <param id="0" name="Variable">isShieldActivated</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+                <condition id="5" name="Key code is down" sid="213334858596296" type="Keyboard">
+                    <param id="0" name="Keycode">39</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-4" name="Set position to another object" sid="348230243107975" type="shield">
+                    <param id="0" name="Object">ship</param>
+                    <param id="1" name="Image point (optional)">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="587751467677735">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="717255813444102" type="shield">
+                    <param id="0" name="Object">asteroid</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="686179711534264" type="asteroid" />
+                <action id="25" name="Play at object" sid="367396118215414" type="sounds">
+                    <param id="0" name="Audio file">asteroid-destroyed2</param>
+                    <param id="1" name="Loop">0</param>
+                    <param id="2" name="Volume">4</param>
+                    <param id="3" name="Object">asteroid</param>
+                    <param id="4" name="Inner angle">360</param>
+                    <param id="5" name="Outer angle">360</param>
+                    <param id="6" name="Outer gain">0</param>
+                    <param id="7" name="Tag (optional)">&quot;&quot;</param>
+                </action>
+                <action id="0" name="Spawn another object" sid="793889686472764" type="asteroid">
+                    <param id="0" name="Object">asteroidExplosion</param>
+                    <param id="1" name="Layer">0</param>
+                    <param id="2" name="Image point">0</param>
+                </action>
+                <action id="-8" name="Set angle" sid="383243402430831" type="asteroidExplosion">
+                    <param id="0" name="Angle">random(360)</param>
+                </action>
+                <action id="-9" name="Destroy" sid="255402249359320" type="asteroid" />
+                <action id="-16" name="Wait" sid="260218923957126" type="System">
+                    <param id="0" name="Seconds">0.2</param>
+                </action>
+                <action id="-9" name="Destroy" sid="534009922221257" type="asteroidExplosion" />
+            </actions>
+        </event-block>
+        <event-block sid="231658267492039">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="685728227328707" type="bullet">
+                    <param id="0" name="Object">asteroid</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="994057993925873" type="bullet" />
+                <action id="-9" name="Set value" sid="719788675599013" type="System">
+                    <param id="0" name="Variable">score</param>
+                    <param id="1" name="Value">score + 5</param>
+                </action>
+                <action id="0" name="Set text" sid="779715806766667" type="scoreTextHUD">
+                    <param id="0" name="Text">&quot;Score: &quot;&amp;score</param>
+                </action>
+                <action id="25" name="Play at object" sid="823906338000680" type="sounds">
+                    <param id="0" name="Audio file">asteroid-destroyed2</param>
+                    <param id="1" name="Loop">0</param>
+                    <param id="2" name="Volume">4</param>
+                    <param id="3" name="Object">asteroid</param>
+                    <param id="4" name="Inner angle">360</param>
+                    <param id="5" name="Outer angle">360</param>
+                    <param id="6" name="Outer gain">0</param>
+                    <param id="7" name="Tag (optional)">&quot;&quot;</param>
+                </action>
+                <action id="0" name="Spawn another object" sid="882830376087712" type="asteroid">
+                    <param id="0" name="Object">asteroidExplosion</param>
+                    <param id="1" name="Layer">0</param>
+                    <param id="2" name="Image point">0</param>
+                </action>
+                <action id="-8" name="Set angle" sid="475185481586893" type="asteroidExplosion">
+                    <param id="0" name="Angle">random(360)</param>
+                </action>
+                <action id="-9" name="Destroy" sid="165825809976950" type="asteroid" />
+                <action id="-16" name="Wait" sid="444576024973802" type="System">
+                    <param id="0" name="Seconds">0.2</param>
+                </action>
+                <action id="-9" name="Destroy" sid="140300633136642" type="asteroidExplosion" />
+            </actions>
+        </event-block>
+        <event-block sid="176168111724193">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="116557983530968" type="ship">
+                    <param id="0" name="Object">asteroid</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="699964731056801" type="System">
+                    <param id="0" name="Variable">lives</param>
+                    <param id="1" name="Value">lives - 1</param>
+                </action>
+                <action id="0" name="Spawn another object" sid="314552127780751" type="asteroid">
+                    <param id="0" name="Object">asteroidExplosion</param>
+                    <param id="1" name="Layer">0</param>
+                    <param id="2" name="Image point">0</param>
+                </action>
+                <action id="25" name="Play at object" sid="763932786764509" type="sounds">
+                    <param id="0" name="Audio file">asteroid-destroyed2</param>
+                    <param id="1" name="Loop">0</param>
+                    <param id="2" name="Volume">4</param>
+                    <param id="3" name="Object">asteroid</param>
+                    <param id="4" name="Inner angle">360</param>
+                    <param id="5" name="Outer angle">360</param>
+                    <param id="6" name="Outer gain">0</param>
+                    <param id="7" name="Tag (optional)">&quot;&quot;</param>
+                </action>
+                <action id="-8" name="Set angle" sid="387202054569946" type="asteroidExplosion">
+                    <param id="0" name="Angle">random(360)</param>
+                </action>
+                <action id="-16" name="Wait" sid="753766055800123" type="System">
+                    <param id="0" name="Seconds">0.2</param>
+                </action>
+                <action id="-9" name="Destroy" sid="687186005465761" type="asteroidExplosion" />
+            </actions>
+        </event-block>
+        <event-block sid="392837294661470">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="740754041946212" type="ship">
+                    <param id="0" name="Object">asteroid</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="253676405309596" type="System">
+                    <param id="0" name="Variable">lives</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">2</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="536171806551848" type="heart3" />
+                <action id="-9" name="Destroy" sid="646469721687780" type="asteroid" />
+                <action id="-3" name="Set position" sid="993361995685174" type="ship">
+                    <param id="0" name="X">initialPositionX</param>
+                    <param id="1" name="Y">initialPositionY</param>
+                </action>
+                <action id="0" name="Call function" sid="869382254659061" type="Function">
+                    <param id="0" name="Name">&quot;activateShield&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="631683230778108">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="989236734112377" type="ship">
+                    <param id="0" name="Object">asteroid</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="702506705393732" type="System">
+                    <param id="0" name="Variable">lives</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="516643021657262" type="heart2" />
+                <action id="-9" name="Destroy" sid="212730598753746" type="asteroid" />
+                <action id="-3" name="Set position" sid="436537397999619" type="ship">
+                    <param id="0" name="X">initialPositionX</param>
+                    <param id="1" name="Y">initialPositionY</param>
+                </action>
+                <action id="0" name="Call function" sid="834172499414381" type="Function">
+                    <param id="0" name="Name">&quot;activateShield&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>game over</comment>
+        <event-block sid="569533493798618">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="512256290747448" type="ship">
+                    <param id="0" name="Object">asteroid</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="622549340711185" type="System">
+                    <param id="0" name="Variable">lives</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="217301061348822" type="System">
+                    <param id="0" name="Variable">score</param>
+                    <param id="1" name="Comparison">4</param>
+                    <param id="2" name="Value">highScore</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="429996511131840" type="System">
+                    <param id="0" name="Variable">highScore</param>
+                    <param id="1" name="Value">score</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="295637385420101">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="169950159792341" type="ship">
+                    <param id="0" name="Object">asteroid</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="219000002970767" type="System">
+                    <param id="0" name="Variable">lives</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="655154036025624" type="ship" />
+                <action id="25" name="Play at object" sid="704843860143143" type="sounds">
+                    <param id="0" name="Audio file">player-destroyed</param>
+                    <param id="1" name="Loop">0</param>
+                    <param id="2" name="Volume">2</param>
+                    <param id="3" name="Object">ship</param>
+                    <param id="4" name="Inner angle">360</param>
+                    <param id="5" name="Outer angle">360</param>
+                    <param id="6" name="Outer gain">0</param>
+                    <param id="7" name="Tag (optional)">&quot;&quot;</param>
+                </action>
+                <action id="-15" name="Set visible" sid="733659832934100" type="gameOverTitleText">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action id="-15" name="Set visible" sid="159426743467815" type="gameOverScoreText">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action id="-15" name="Set visible" sid="229338295213693" type="gameOverHighScoreText">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action id="0" name="Set text" sid="670286524896718" type="gameOverScoreText">
+                    <param id="0" name="Text">&quot;Score: &quot;&amp;score</param>
+                </action>
+                <action id="0" name="Set text" sid="522636118332877" type="gameOverHighScoreText">
+                    <param id="0" name="Text">&quot;High score: &quot;&amp;highScore</param>
+                </action>
+                <action id="-9" name="Destroy" sid="444385091034639" type="heart1" />
+                <action id="-9" name="Destroy" sid="466386179254873" type="asteroid" />
+                <action id="-9" name="Destroy" sid="769891844889093" type="scoreTextHUD" />
+                <action id="-9" name="Destroy" sid="227600188626189" type="highScoreTextHUD" />
+                <action id="-16" name="Wait" sid="749912640720539" type="System">
+                    <param id="0" name="Seconds">restartTime</param>
+                </action>
+                <action id="-9" name="Set value" sid="473193514694835" type="System">
+                    <param id="0" name="Variable">lives</param>
+                    <param id="1" name="Value">3</param>
+                </action>
+                <action id="-26" name="Restart layout" sid="486244402554983" type="System" />
+            </actions>
+            <sub-events>
+                <comment>press S to activate shield</comment>
+            </sub-events>
+        </event-block>
+        <event-block sid="103020980981953">
+            <conditions>
+                <condition id="0" name="On function" sid="973603513643104" type="Function">
+                    <param id="0" name="Name">&quot;activateShield&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-15" name="Set visible" sid="231722153500329" type="shield">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action id="-4" name="Set position to another object" sid="509728191084921" type="shield">
+                    <param id="0" name="Object">ship</param>
+                    <param id="1" name="Image point (optional)">0</param>
+                </action>
+                <action id="-9" name="Set value" sid="514030515141076" type="System">
+                    <param id="0" name="Variable">isShieldActivated</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="-16" name="Wait" sid="363906261276246" type="System">
+                    <param id="0" name="Seconds">2.0</param>
+                </action>
+                <action id="0" name="Call function" sid="815448797803857" type="Function">
+                    <param id="0" name="Name">&quot;deactivateShield&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="103023066706604">
+            <conditions>
+                <condition id="0" name="On function" sid="930248492154365" type="Function">
+                    <param id="0" name="Name">&quot;deactivateShield&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="439303886859803" type="System">
+                    <param id="0" name="Variable">isShieldActivated</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="-15" name="Set visible" sid="761283092842112" type="shield">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="-3" name="Set position" sid="580661602220466" type="shield">
+                    <param id="0" name="X">shieldInitialPositionX</param>
+                    <param id="1" name="Y">shieldInitialPositionY</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="317299765171097">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="894936180864782" type="System" />
+            </conditions>
+            <actions>
+                <action id="0" name="Set text" sid="477554273837349" type="highScoreTextHUD">
+                    <param id="0" name="Text">&quot;High Score: &quot;&amp;HighScore</param>
+                </action>
+                <action id="0" name="Set text" sid="165659874573747" type="fscore">
+                    <param id="0" name="Text">&quot;tua mae&quot;&amp;shipSpeed</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>game background sound</comment>
+        <event-block sid="460821590399236">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="296146068839494" type="System" />
+            </conditions>
+            <actions>
+                <action id="-3" name="Set position" sid="342674769711189" type="tie">
+                    <param id="0" name="X">900</param>
+                    <param id="1" name="Y">random(700)</param>
+                </action>
+                <action id="0" name="Play" sid="662888940284487" type="sounds">
+                    <param id="0" name="Audio file">rebel-theme</param>
+                    <param id="2" name="Loop">0</param>
+                    <param id="3" name="Volume">-10</param>
+                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                </action>
+                <action id="-9" name="Set value" sid="634275566059772" type="System">
+                    <param id="0" name="Variable">score</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="231663325075299">
+            <conditions>
+                <condition id="-6" name="Every X seconds" sid="877129553754710" type="System">
+                    <param id="0" name="Interval (seconds)">random(0.7,1.5)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-3" name="Create object" sid="747141799487062" type="System">
+                    <param id="0" name="Object to create">tie</param>
+                    <param id="1" name="Layer">&quot;objects&quot;</param>
+                    <param id="2" name="X">900</param>
+                    <param id="3" name="Y">random(1,700)</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="534367859386098">
+            <conditions>
+                <condition id="-6" name="Every X seconds" sid="589218258325143" type="System">
+                    <param id="0" name="Interval (seconds)">random(0.7,1.5)</param>
+                </condition>
+                <condition id="-16" name="Pick random instance" sid="891659060612275" type="System">
+                    <param id="0" name="Object">tie</param>
+                </condition>
+                <condition id="-3" name="Is on-screen" sid="382419880562882" type="ship" />
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="690532779921470" type="System">
+                    <param id="0" name="Variable">tieAngle</param>
+                    <param id="1" name="Value">tie.Angle</param>
+                </action>
+                <action id="-22" name="Set angle toward position" sid="683093027062204" type="tie">
+                    <param id="0" name="X">ship.X</param>
+                    <param id="1" name="Y">ship.Y</param>
+                </action>
+                <action id="-3" name="Create object" sid="887061408818483" type="System">
+                    <param id="0" name="Object to create">bullettie</param>
+                    <param id="1" name="Layer">&quot;objects&quot;</param>
+                    <param id="2" name="X">tie.X</param>
+                    <param id="3" name="Y">tie.Y</param>
+                </action>
+                <action id="-22" name="Set angle toward position" sid="549737610707600" type="bullettie">
+                    <param id="0" name="X">ship.X</param>
+                    <param id="1" name="Y">ship.Y</param>
+                </action>
+                <action id="-16" name="Wait" sid="559432430709258" type="System">
+                    <param id="0" name="Seconds">0.2</param>
+                </action>
+                <action id="-8" name="Set angle" sid="138887736281199" type="tie">
+                    <param id="0" name="Angle">tieAngle</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="460712591836059">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="722801517562466" type="trash">
+                    <param id="0" name="Object">tie</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="464925785542020" type="tie" />
+            </actions>
+        </event-block>
+        <event-block sid="784159419260262">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="959553103439973" type="bullettie">
+                    <param id="0" name="Object">asteroid</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="496225963466659" type="bullettie" />
+                <action id="25" name="Play at object" sid="380032845625011" type="sounds">
+                    <param id="0" name="Audio file">asteroid-destroyed2</param>
+                    <param id="1" name="Loop">0</param>
+                    <param id="2" name="Volume">4</param>
+                    <param id="3" name="Object">asteroid</param>
+                    <param id="4" name="Inner angle">360</param>
+                    <param id="5" name="Outer angle">360</param>
+                    <param id="6" name="Outer gain">0</param>
+                    <param id="7" name="Tag (optional)">&quot;&quot;</param>
+                </action>
+                <action id="0" name="Spawn another object" sid="997242756585914" type="asteroid">
+                    <param id="0" name="Object">asteroidExplosion</param>
+                    <param id="1" name="Layer">0</param>
+                    <param id="2" name="Image point">0</param>
+                </action>
+                <action id="-8" name="Set angle" sid="271787087802648" type="asteroidExplosion">
+                    <param id="0" name="Angle">random(360)</param>
+                </action>
+                <action id="-9" name="Destroy" sid="929676944946643" type="asteroid" />
+                <action id="-16" name="Wait" sid="745054254828294" type="System">
+                    <param id="0" name="Seconds">0.2</param>
+                </action>
+                <action id="-9" name="Destroy" sid="835806033583329" type="asteroidExplosion" />
+            </actions>
+        </event-block>
+        <event-block sid="447205268181650">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="418500894510136" type="bullet">
+                    <param id="0" name="Object">tie</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="961688908367068" type="bullet" />
+                <action id="-9" name="Set value" sid="534298403501712" type="System">
+                    <param id="0" name="Variable">score</param>
+                    <param id="1" name="Value">score + 10</param>
+                </action>
+                <action id="0" name="Set text" sid="502012461828932" type="scoreTextHUD">
+                    <param id="0" name="Text">&quot;Score: &quot;&amp;score</param>
+                </action>
+                <action id="25" name="Play at object" sid="674903695069696" type="sounds">
+                    <param id="0" name="Audio file">asteroid-destroyed2</param>
+                    <param id="1" name="Loop">0</param>
+                    <param id="2" name="Volume">4</param>
+                    <param id="3" name="Object">asteroid</param>
+                    <param id="4" name="Inner angle">360</param>
+                    <param id="5" name="Outer angle">360</param>
+                    <param id="6" name="Outer gain">0</param>
+                    <param id="7" name="Tag (optional)">&quot;&quot;</param>
+                </action>
+                <action id="0" name="Spawn another object" sid="812862995745981" type="tie">
+                    <param id="0" name="Object">asteroidExplosion</param>
+                    <param id="1" name="Layer">0</param>
+                    <param id="2" name="Image point">0</param>
+                </action>
+                <action id="-8" name="Set angle" sid="449366668084990" type="asteroidExplosion">
+                    <param id="0" name="Angle">random(360)</param>
+                </action>
+                <action id="-9" name="Destroy" sid="854116519375037" type="tie" />
+                <action id="-16" name="Wait" sid="219363584658162" type="System">
+                    <param id="0" name="Seconds">0.2</param>
+                </action>
+                <action id="-9" name="Destroy" sid="928610912150038" type="asteroidExplosion" />
+            </actions>
+        </event-block>
+        <event-block sid="892813501208662">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="153416577307109" type="ship">
+                    <param id="0" name="Object">bullettie</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="379854046832865" type="System">
+                    <param id="0" name="Variable">lives</param>
+                    <param id="1" name="Value">lives - 1</param>
+                </action>
+                <action id="25" name="Play at object" sid="150492184986558" type="sounds">
+                    <param id="0" name="Audio file">asteroid-destroyed2</param>
+                    <param id="1" name="Loop">0</param>
+                    <param id="2" name="Volume">4</param>
+                    <param id="3" name="Object">asteroid</param>
+                    <param id="4" name="Inner angle">360</param>
+                    <param id="5" name="Outer angle">360</param>
+                    <param id="6" name="Outer gain">0</param>
+                    <param id="7" name="Tag (optional)">&quot;&quot;</param>
+                </action>
+                <action id="0" name="Spawn another object" sid="290329641399726" type="ship">
+                    <param id="0" name="Object">asteroidExplosion</param>
+                    <param id="1" name="Layer">0</param>
+                    <param id="2" name="Image point">0</param>
+                </action>
+                <action id="-8" name="Set angle" sid="192962712181325" type="asteroidExplosion">
+                    <param id="0" name="Angle">random(360)</param>
+                </action>
+                <action id="-16" name="Wait" sid="598064067481262" type="System">
+                    <param id="0" name="Seconds">0.2</param>
+                </action>
+                <action id="-9" name="Destroy" sid="174988663236881" type="asteroidExplosion" />
+            </actions>
+        </event-block>
+        <event-block sid="569221783446260">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="151259332486323" type="ship">
+                    <param id="0" name="Object">bullettie</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="731064392909322" type="System">
+                    <param id="0" name="Variable">lives</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">2</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="248984144312029" type="heart3" />
+                <action id="-9" name="Destroy" sid="620000014909184" type="bullettie" />
+                <action id="-3" name="Set position" sid="257112176087261" type="ship">
+                    <param id="0" name="X">initialPositionX</param>
+                    <param id="1" name="Y">initialPositionY</param>
+                </action>
+                <action id="0" name="Call function" sid="101989246370685" type="Function">
+                    <param id="0" name="Name">&quot;activateShield&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="362276524272912">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="503014947009033" type="ship">
+                    <param id="0" name="Object">bullettie</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="405759777018689" type="System">
+                    <param id="0" name="Variable">lives</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="170565768807464" type="heart2" />
+                <action id="-9" name="Destroy" sid="702749466266989" type="bullettie" />
+                <action id="-3" name="Set position" sid="581341366744705" type="ship">
+                    <param id="0" name="X">initialPositionX</param>
+                    <param id="1" name="Y">initialPositionY</param>
+                </action>
+                <action id="0" name="Call function" sid="651349884585946" type="Function">
+                    <param id="0" name="Name">&quot;activateShield&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>game over</comment>
+        <event-block sid="988574226423797">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="688370901359813" type="ship">
+                    <param id="0" name="Object">bullettie</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="218627936413249" type="System">
+                    <param id="0" name="Variable">lives</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="454647016505079" type="System">
+                    <param id="0" name="Variable">score</param>
+                    <param id="1" name="Comparison">4</param>
+                    <param id="2" name="Value">highScore</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="958547969700123" type="System">
+                    <param id="0" name="Variable">highScore</param>
+                    <param id="1" name="Value">score</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="231900534326093">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="279743692334249" type="ship">
+                    <param id="0" name="Object">bullettie</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="239523155461509" type="System">
+                    <param id="0" name="Variable">lives</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="404296026017554" type="ship" />
+                <action id="25" name="Play at object" sid="686027164606070" type="sounds">
+                    <param id="0" name="Audio file">player-destroyed</param>
+                    <param id="1" name="Loop">0</param>
+                    <param id="2" name="Volume">2</param>
+                    <param id="3" name="Object">ship</param>
+                    <param id="4" name="Inner angle">360</param>
+                    <param id="5" name="Outer angle">360</param>
+                    <param id="6" name="Outer gain">0</param>
+                    <param id="7" name="Tag (optional)">&quot;&quot;</param>
+                </action>
+                <action id="-15" name="Set visible" sid="948856642693568" type="gameOverTitleText">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action id="-15" name="Set visible" sid="537391351004491" type="gameOverScoreText">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action id="-15" name="Set visible" sid="655847405829473" type="gameOverHighScoreText">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action id="0" name="Set text" sid="882571078329531" type="gameOverHighScoreText">
+                    <param id="0" name="Text">&quot;High Score: &quot;&amp;highScore</param>
+                </action>
+                <action id="0" name="Set text" sid="963837877300428" type="gameOverScoreText">
+                    <param id="0" name="Text">&quot;Score: &quot;&amp;score</param>
+                </action>
+                <action id="-9" name="Destroy" sid="339222821121853" type="heart1" />
+                <action id="-9" name="Destroy" sid="393752163553851" type="bullettie" />
+                <action id="-9" name="Destroy" sid="435196305877595" type="scoreTextHUD" />
+                <action id="-9" name="Destroy" sid="701254399188003" type="highScoreTextHUD" />
+                <action id="-16" name="Wait" sid="454356981087006" type="System">
+                    <param id="0" name="Seconds">restartTime</param>
+                </action>
+                <action id="-9" name="Set value" sid="641619518379765" type="System">
+                    <param id="0" name="Variable">lives</param>
+                    <param id="1" name="Value">3</param>
+                </action>
+                <action id="-26" name="Restart layout" sid="683778010015557" type="System" />
+            </actions>
+        </event-block>
+        <event-block sid="986422243891241">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="492378599055570" type="shield">
+                    <param id="0" name="Object">bullettie</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="810368488683444" type="bullettie" />
+            </actions>
+        </event-block>
+        <event-block sid="148433278031918">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="819831867420521" type="ship">
+                    <param id="0" name="Object">terraintrigger</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-3" name="Create object" sid="984316242590004" type="System">
+                    <param id="0" name="Object to create">terrain</param>
+                    <param id="1" name="Layer">&quot;solo&quot;</param>
+                    <param id="2" name="X">3905 - 1000</param>
+                    <param id="3" name="Y">terrain.Y</param>
+                </action>
+                <action id="-3" name="Create object" sid="885202104516716" type="System">
+                    <param id="0" name="Object to create">terraintrigger</param>
+                    <param id="1" name="Layer">&quot;objects&quot;</param>
+                    <param id="2" name="X">4905 - 1000</param>
+                    <param id="3" name="Y">terrain.y</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="420673463136149">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="240603633054991" type="trashterrain">
+                    <param id="0" name="Object">terrain</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="874019176688772" type="terrain" />
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>
