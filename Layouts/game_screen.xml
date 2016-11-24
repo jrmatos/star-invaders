@@ -184,6 +184,33 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
+                <instance type="hpBossText" uid="34">
+                    <properties>
+                        <text>BOSS: 100%</text>
+                        <initial-visibility>Invisible</initial-visibility>
+                        <font>Arial,-27,400,0</font>
+                        <color>255,255,255</color>
+                        <horizontal-alignment>Left</horizontal-alignment>
+                        <vertical-alignment>Top</vertical-alignment>
+                        <hotspot>Top-left</hotspot>
+                        <wrapping>Word</wrapping>
+                        <line-height>0</line-height>
+                    </properties>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>658</x>
+                        <y>30</y>
+                        <z>0</z>
+                        <width>367</width>
+                        <height>97</height>
+                        <depth>0</depth>
+                        <hotspotX>0</hotspotX>
+                        <hotspotY>0</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
             </instances>
             <effects />
         </layer>
@@ -281,8 +308,8 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>974</x>
-                        <y>-122</y>
+                        <x>990</x>
+                        <y>-103</y>
                         <z>0</z>
                         <width>26</width>
                         <height>26</height>
@@ -491,8 +518,8 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>511</x>
-                        <y>-130</y>
+                        <x>4</x>
+                        <y>886</y>
                         <z>0</z>
                         <width>63</width>
                         <height>58</height>
@@ -525,8 +552,8 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>971</x>
-                        <y>-93</y>
+                        <x>-47</x>
+                        <y>876</y>
                         <z>0</z>
                         <width>26</width>
                         <height>26</height>
@@ -644,7 +671,7 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>1050</x>
+                        <x>989</x>
                         <y>395</y>
                         <z>0</z>
                         <width>63</width>
@@ -673,11 +700,11 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>955</x>
-                        <y>293</y>
+                        <x>1341</x>
+                        <y>318</y>
                         <z>0</z>
-                        <width>367</width>
-                        <height>361</height>
+                        <width>365</width>
+                        <height>360</height>
                         <depth>0</depth>
                         <hotspotX>0.500505567</hotspotX>
                         <hotspotY>0.5</hotspotY>
@@ -778,6 +805,33 @@
                         <z>0</z>
                         <width>545</width>
                         <height>45</height>
+                        <depth>0</depth>
+                        <hotspotX>0</hotspotX>
+                        <hotspotY>0</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
+                <instance type="congratulationsText" uid="35">
+                    <properties>
+                        <text>Congratulations!</text>
+                        <initial-visibility>Invisible</initial-visibility>
+                        <font>Arial,-64,400,0</font>
+                        <color>255,255,255</color>
+                        <horizontal-alignment>Center</horizontal-alignment>
+                        <vertical-alignment>Top</vertical-alignment>
+                        <hotspot>Top-left</hotspot>
+                        <wrapping>Word</wrapping>
+                        <line-height>0</line-height>
+                    </properties>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>203</x>
+                        <y>184</y>
+                        <z>0</z>
+                        <width>540</width>
+                        <height>183</height>
                         <depth>0</depth>
                         <hotspotX>0</hotspotX>
                         <hotspotY>0</hotspotY>

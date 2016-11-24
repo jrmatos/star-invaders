@@ -3,7 +3,10 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>eventsheet gs</name>
     <events>
-        <variable constant="0" name="boss" sid="427274435100367" static="0" type="number">1</variable>
+        <variable constant="0" name="bossHpPerBullet" sid="952662253269667" static="0" type="number">2</variable>
+        <variable constant="0" name="hpBoss" sid="929534341014371" static="0" type="number">100</variable>
+        <variable constant="0" name="clock" sid="210516383505372" static="0" type="number">0</variable>
+        <variable constant="0" name="boss" sid="427274435100367" static="0" type="number">0</variable>
         <variable constant="0" name="restartTime" sid="695558150600266" static="0" type="number">7</variable>
         <variable constant="0" name="tieAngle" sid="700714816345547" static="0" type="number">0</variable>
         <variable constant="0" name="score" sid="713213432630531" static="0" type="number">0</variable>
@@ -489,16 +492,6 @@
                 </action>
             </actions>
         </event-block>
-        <event-block sid="317299765171097">
-            <conditions>
-                <condition id="-2" name="On start of layout" sid="894936180864782" type="System" />
-            </conditions>
-            <actions>
-                <action id="0" name="Set text" sid="477554273837349" type="highScoreTextHUD">
-                    <param id="0" name="Text">&quot;High Score: &quot;&amp;HighScore</param>
-                </action>
-            </actions>
-        </event-block>
         <comment>game background sound</comment>
         <event-block sid="231663325075299">
             <conditions>
@@ -974,26 +967,25 @@
                 <action id="-9" name="Destroy" sid="783693054954730" type="asteroidExplosion" />
             </actions>
         </event-block>
-        <event-block sid="699295042909305">
-            <conditions>
-                <condition id="-6" name="Every X seconds" sid="672187545438920" type="System">
-                    <param id="0" name="Interval (seconds)">1</param>
-                </condition>
-            </conditions>
-            <actions>
-                <action id="-3" name="Set position" sid="680590606240888" type="deathstar">
-                    <param id="0" name="X">random(820,900)</param>
-                    <param id="1" name="Y">random(350,400)</param>
-                </action>
-            </actions>
-        </event-block>
         <event-block sid="213156752317641">
             <conditions>
                 <condition id="0" name="On collision with another object" sid="888817421431199" type="bullet">
                     <param id="0" name="Object">deathstar</param>
                 </condition>
+                <condition id="-14" name="Compare variable" sid="379228219022727" type="System">
+                    <param id="0" name="Variable">hpBoss</param>
+                    <param id="1" name="Comparison">4</param>
+                    <param id="2" name="Value">bossHpPerBullet</param>
+                </condition>
             </conditions>
             <actions>
+                <action id="-9" name="Set value" sid="830568203606492" type="System">
+                    <param id="0" name="Variable">hpBoss</param>
+                    <param id="1" name="Value">hpBoss - bossHpPerBullet</param>
+                </action>
+                <action id="0" name="Set text" sid="933119218600060" type="hpBossText">
+                    <param id="0" name="Text">&quot;BOSS: &quot;&amp;hpBoss &amp; &quot;%&quot;</param>
+                </action>
                 <action id="0" name="Spawn another object" sid="241719343173259" type="bullet">
                     <param id="0" name="Object">asteroidExplosion</param>
                     <param id="1" name="Layer">0</param>
@@ -1004,6 +996,178 @@
                     <param id="0" name="Seconds">0.2</param>
                 </action>
                 <action id="-9" name="Destroy" sid="161841439778535" type="asteroidExplosion" />
+            </actions>
+        </event-block>
+        <event-block sid="955736985829824">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="805273478744813" type="bullet">
+                    <param id="0" name="Object">deathstar</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="431412912432743" type="System">
+                    <param id="0" name="Variable">hpBoss</param>
+                    <param id="1" name="Comparison">3</param>
+                    <param id="2" name="Value">bossHpPerBullet</param>
+                </condition>
+                <condition id="-8" name="Compare two values" sid="350642260790044" type="System">
+                    <param id="0" name="First value">score + 500</param>
+                    <param id="1" name="Comparison">4</param>
+                    <param id="2" name="Second value">highScore</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="998285392938845" type="System">
+                    <param id="0" name="Variable">highScore</param>
+                    <param id="1" name="Value">score + 500</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="609279924128014">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="560591075588299" type="bullet">
+                    <param id="0" name="Object">deathstar</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="944496907031784" type="System">
+                    <param id="0" name="Variable">hpBoss</param>
+                    <param id="1" name="Comparison">3</param>
+                    <param id="2" name="Value">bossHpPerBullet</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="610669642182086" type="hpBossText" />
+                <action id="-9" name="Destroy" sid="261173672883273" type="deathstar" />
+                <action id="-9" name="Destroy" sid="245091837289418" type="bullettie" />
+                <action id="-15" name="Set visible" sid="494539646556383" type="congratulationsText">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action id="-9" name="Set value" sid="734016669791802" type="System">
+                    <param id="0" name="Variable">score</param>
+                    <param id="1" name="Value">score + 500</param>
+                </action>
+                <action id="-9" name="Destroy" sid="647461281324606" type="highScoreTextHUD" />
+                <action id="-9" name="Destroy" sid="889298995186511" type="scoreTextHUD" />
+                <action id="-15" name="Set visible" sid="210727582216908" type="gameOverHighScoreText">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action id="-15" name="Set visible" sid="942665009557050" type="gameOverScoreText">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action id="0" name="Set text" sid="520864409579282" type="gameOverScoreText">
+                    <param id="0" name="Text">&quot;Score: &quot;&amp;score</param>
+                </action>
+                <action id="0" name="Set text" sid="850663488428952" type="gameOverHighScoreText">
+                    <param id="0" name="Text">&quot;High score: &quot;&amp;highScore</param>
+                </action>
+                <action id="0" name="Play" sid="284569830314192" type="sounds">
+                    <param id="0" name="Audio file">player-destroyed</param>
+                    <param id="2" name="Loop">0</param>
+                    <param id="3" name="Volume">-10</param>
+                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>mode death star</comment>
+        <event-block sid="371263622066489">
+            <conditions>
+                <condition id="-6" name="Every X seconds" sid="716494497130515" type="System">
+                    <param id="0" name="Interval (seconds)">1</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="831802887572283" type="System">
+                    <param id="0" name="Variable">boss</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+                <condition id="-3" name="Is on-screen" sid="128265132355707" type="ship" />
+            </conditions>
+            <actions>
+                <action id="-3" name="Set position" sid="680590606240888" type="deathstar">
+                    <param id="0" name="X">random(850,900)</param>
+                    <param id="1" name="Y">random(200,700)</param>
+                </action>
+                <action id="-3" name="Create object" sid="417981327941574" type="System">
+                    <param id="0" name="Object to create">bullettie</param>
+                    <param id="1" name="Layer">0</param>
+                    <param id="2" name="X">deathstar.X - 130</param>
+                    <param id="3" name="Y">deathstar.Y</param>
+                </action>
+                <action id="-8" name="Set angle" sid="963000810826023" type="bullettie">
+                    <param id="0" name="Angle">120</param>
+                </action>
+                <action id="-3" name="Create object" sid="656750723603311" type="System">
+                    <param id="0" name="Object to create">bullettie</param>
+                    <param id="1" name="Layer">0</param>
+                    <param id="2" name="X">deathstar.X - 130</param>
+                    <param id="3" name="Y">deathstar.Y</param>
+                </action>
+                <action id="-8" name="Set angle" sid="716408461054934" type="bullettie">
+                    <param id="0" name="Angle">150</param>
+                </action>
+                <action id="-3" name="Create object" sid="177671531135462" type="System">
+                    <param id="0" name="Object to create">bullettie</param>
+                    <param id="1" name="Layer">0</param>
+                    <param id="2" name="X">deathstar.X - 130</param>
+                    <param id="3" name="Y">deathstar.Y</param>
+                </action>
+                <action id="-8" name="Set angle" sid="327088343178832" type="bullettie">
+                    <param id="0" name="Angle">180</param>
+                </action>
+                <action id="-3" name="Create object" sid="444420989340951" type="System">
+                    <param id="0" name="Object to create">bullettie</param>
+                    <param id="1" name="Layer">0</param>
+                    <param id="2" name="X">deathstar.X - 130</param>
+                    <param id="3" name="Y">deathstar.Y</param>
+                </action>
+                <action id="-8" name="Set angle" sid="407296447343807" type="bullettie">
+                    <param id="0" name="Angle">210</param>
+                </action>
+                <action id="-3" name="Create object" sid="377269097037471" type="System">
+                    <param id="0" name="Object to create">bullettie</param>
+                    <param id="1" name="Layer">0</param>
+                    <param id="2" name="X">deathstar.X - 130</param>
+                    <param id="3" name="Y">deathstar.Y</param>
+                </action>
+                <action id="-8" name="Set angle" sid="854539608260295" type="bullettie">
+                    <param id="0" name="Angle">240</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="792259265425389">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="329886833311245" type="tie">
+                    <param id="0" name="Object">trash2</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="231443144140330" type="tie" />
+            </actions>
+        </event-block>
+        <event-block sid="317299765171097">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="894936180864782" type="System" />
+            </conditions>
+            <actions>
+                <action id="0" name="Set text" sid="477554273837349" type="highScoreTextHUD">
+                    <param id="0" name="Text">&quot;High Score: &quot;&amp;HighScore</param>
+                </action>
+                <action id="-9" name="Set value" sid="877269596919464" type="System">
+                    <param id="0" name="Variable">boss</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="-9" name="Set value" sid="285654504527958" type="System">
+                    <param id="0" name="Variable">score</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="-9" name="Destroy" sid="716868813871433" type="tie" />
+                <action id="-9" name="Destroy" sid="800565330454897" type="atat" />
+                <action id="-16" name="Wait" sid="132168657437034" type="System">
+                    <param id="0" name="Seconds">30</param>
+                </action>
+                <action id="-9" name="Set value" sid="799773781569815" type="System">
+                    <param id="0" name="Variable">boss</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="-15" name="Set visible" sid="850172638735142" type="hpBossText">
+                    <param id="0" name="Visibility">1</param>
+                </action>
             </actions>
         </event-block>
     </events>

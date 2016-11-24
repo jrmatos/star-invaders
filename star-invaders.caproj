@@ -468,6 +468,12 @@
                 </animation>
             </animation-folder>
         </object-type>
+        <object-type name="hpBossText" sid="190731997306751">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="congratulationsText" sid="440732339975691">
+            <plugin id="Text" />
+        </object-type>
     </object-folder>
     <families />
     <layout-folder>
