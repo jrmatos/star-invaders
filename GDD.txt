@@ -40,6 +40,6 @@
 	- BOSS: 500
 
 - Controles:
-		- "Setas" para movimentar a Nave
-		- "Espaço" para atirar
+	- "Setas" para movimentar a Nave
+	- "Espaço" para atirar
 
