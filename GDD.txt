@@ -17,7 +17,7 @@
 		- Tiro triplo
 		- Só atira em alvos a sua frente ou em cima
 
-	- BOSS
+	- BOSS (DEATH STAR)
 		- Aparece após 20 segundos do início da partida
 		- Um hud mostrando a vida do boss aparece no canto superior direito da tela
 		- Se move de forma aleatória a cada segundo
@@ -39,9 +39,7 @@
 	- ATAT: 20
 	- BOSS: 500
 
-- Mecânica 
-	- O jogo inicia, os inimigos são criados e vem em direções aleatórias. 
-	- Controles:
+- Controles:
 		- "Setas" para movimentar a Nave
 		- "Espaço" para atirar
 
