@@ -1,30 +1,47 @@
-- Terreno infinito
+﻿- Características:
+	- Terreno infinito
+	- Gráficos em Pixel Art
+	- Game baseado no jogo Space Invaders
+	- Releitura com Características da franquia Star Wars
+	- Jogabilidade Horizontal, Inversa do tradicional Space Invaders (Vertical)
 
-- Inimigo Tie fighter
-	- aéreo
-	- único tiro
-	- mira para o jogador, atira e continua na trajetória anterior
-	- atira em todas as direções
+-Inimigos:
+	- Tie fighter
+		- Aéreo
+		- Único tiro
+		- Acompanha o movimento do jogador e atira. Continua sua trajetória
+		- Atira em todas as direções
 
-- Inimigo ATAT
-	- característica terrestre
-	- tiro triplo
-	- só atira em alvos a sua frente ou em cima
+	- ATAT
+		- Terrestre
+		- Tiro triplo
+		- Só atira em alvos a sua frente ou em cima
 
-Condições de derrota
-	- colisão com meteoro
-	- colisão com bala vermelha (genérica)
+	- BOSS
+		- Aparece após 20 segundos do início da partida
+		- Um hud mostrando a vida do boss aparece no canto superior direito da tela
+		- Se move de forma aleatória a cada segundo
+		- Atira simultaneamente nos ângulos 120, 150, 180, 210 e 240
+		- Total de Life: 100
+		- Cada tiro recebido perde -2 de Life
 
-Pontuação
-	- 5 asteróide
-	- 10 Tie figheter
-	- 20 ATAT
-	- 500 BOSS
+- Condições de Derrota
+	- Colisão com meteoro
+	- Colisão com bala dos inimigos (Tie Fighter, ATAT, BOSS) 
 
-BOSS
-	- aparece após 30 segundos do início da partida
-	- um hud mostrando a vida do boss aparece no canto superior direito da tela
-	- se move de forma aleatória a cada segundo
-	- atira simultaneamente nos ângulos 120, 150, 180, 210 e 240
-	- total de vida: 100
-	- cada tiro recebido perde -2 de vida
+- Condição de Vitória
+	- Chegar até o BOSS e Destruí-lo
+	- Atingir o maior número de Pontuação
+
+- Pontuação
+	- Asteróide: 5
+	- Tie figheter: 10
+	- ATAT: 20
+	- BOSS: 500
+
+- Mecânica 
+	- O jogo inicia, os inimigos são criados e vem em direções aleatórias. 
+	- Controles:
+		- "Setas" para movimentar a Nave
+		- "Espaço" para atirar
+
