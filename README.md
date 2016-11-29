@@ -1,6 +1,6 @@
 # Star Invaders
 
-![GitHub Logo](banner.jpg)
+![GitHub Logo](game_banner.jpg)
 
 ##  Contributors
 
