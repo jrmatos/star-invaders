@@ -11,6 +11,9 @@
 [Thiago Calazans](https://github.com/thicalazans)
 
 
---
+## Game
 
 [Play it](https://jrmatos.github.io/star-invaders)
+
+--
+MIT Licensed.
